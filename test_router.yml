@@ -1,0 +1,10 @@
+groups:
+  - {name: global, prefix: /$(constant.global_prefix), middleware: Report|ResponseFormat}
+  - {name: content, prefix: /content}
+action:
+  get /test1: {uses: TestController@Info, middleware: Cache, group: global|content}
+  get /test2: {uses: TestController@List, middleware: Cache, group: global|content}
+  /test3: {method: get, uses: TestController@List, middleware: Cache, group: global|content}
+  get /test4: {middleware: Cache, group: global|content}
+  get /test5: {uses: TestController, middleware: Cache, group: global|content}
+  get get /test6: {uses: TestController@List, middleware: Cache, group: global|content}
